@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #060b18;
+  --foreground: #e2e8f0;
+  --card: rgba(15, 23, 42, 0.6);
+  --card-foreground: #e2e8f0;
+  --popover: #0c1425;
+  --popover-foreground: #e2e8f0;
+  --primary: #06d6f2;
+  --primary-foreground: #020817;
+  --secondary: #0f1d32;
+  --secondary-foreground: #94a3b8;
+  --muted: #0f1d32;
+  --muted-foreground: #64748b;
+  --accent: #7c3aed;
+  --accent-foreground: #e2e8f0;
+  --destructive: #ef4444;
+  --destructive-foreground: #fecaca;
+  --border: rgba(6, 214, 242, 0.12);
+  --input: rgba(6, 214, 242, 0.08);
+  --ring: #06d6f2;
+  --chart-1: #06d6f2;
+  --chart-2: #3b82f6;
+  --chart-3: #7c3aed;
+  --chart-4: #10b981;
+  --chart-5: #f59e0b;
+  --radius: 0.75rem;
+  --sidebar: #070d1a;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #06d6f2;
+  --sidebar-primary-foreground: #020817;
+  --sidebar-accent: rgba(6, 214, 242, 0.08);
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: rgba(6, 214, 242, 0.1);
+  --sidebar-ring: #06d6f2;
+
+  --cyan: #06d6f2;
+  --neon-blue: #3b82f6;
+  --violet: #7c3aed;
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-cyan: var(--cyan);
+  --color-neon-blue: var(--neon-blue);
+  --color-violet: var(--violet);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Grid overlay */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(6, 214, 242, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 214, 242, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 214, 242, 0.1);
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 214, 242, 0.2);
+  box-shadow: 0 0 30px rgba(6, 214, 242, 0.05);
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 214, 242, 0.15), 0 0 60px rgba(6, 214, 242, 0.05);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 20px rgba(6, 214, 242, 0.5);
+}
+
+/* Animated gradient orb */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.animate-orb {
+  animation: orb-float 20s ease-in-out infinite;
+}
+
+/* Pulse glow for CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(6, 214, 242, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(6, 214, 242, 0.4), 0 0 60px rgba(6, 214, 242, 0.1); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Animated counter */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: count-up 0.6s ease-out forwards;
+}
+
+/* Shield rotate */
+@keyframes shield-float {
+  0%, 100% { transform: perspective(600px) rotateY(0deg) rotateX(0deg); }
+  25% { transform: perspective(600px) rotateY(5deg) rotateX(2deg); }
+  50% { transform: perspective(600px) rotateY(0deg) rotateX(-2deg); }
+  75% { transform: perspective(600px) rotateY(-5deg) rotateX(1deg); }
+}
+
+.animate-shield {
+  animation: shield-float 8s ease-in-out infinite;
+}
+
+/* Fade in up */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out forwards;
+}
+
+/* Noise texture overlay */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060b18;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 214, 242, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 214, 242, 0.4);
+}
